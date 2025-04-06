@@ -6,29 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>퀴즈 프로그램</title>
     <style>
-        /* 흔들리는 애니메이션 */
-        @keyframes shake {
-            0% {
-                transform: translateX(0);
-            }
-
-            25% {
-                transform: translateX(-5px);
-            }
-
-            50% {
-                transform: translateX(5px);
-            }
-
-            75% {
-                transform: translateX(-5px);
-            }
-
-            100% {
-                transform: translateX(0);
-            }
-        }
-
         .shake {
             animation: shake 0.3s;
         }
@@ -52,14 +29,39 @@
         }
 
         #answer {
+            position: fixed;
+            top: 51vh;
+            right: 30vw;
             width: 40%;
             height: 5lvh;
-            margin-left: 50px;
+        }
+
+        #nextBtn {
+            position: fixed;
+            top: 51vh;
+            left: 82vw;
+            padding: 1.5vh;
         }
 
         #result {
-            margin-top: 20px;
-            font-weight: bold;
+            position: fixed;
+            top: 51vh;
+            right: 25vw;
+            width: 70vw;
+            white-space: nowrap;
+        }
+
+        #submit {
+            position: fixed;
+            top: 51vh;
+            left: 82vw;
+            padding: 1.5vh;
+        }
+
+        input,
+        textarea {
+            font-size: 16px;
+            /* 최소 16px로 설정 */
         }
     </style>
 </head>
@@ -67,8 +69,8 @@
 <body>
     <div id="quiz-container">
         <p id="question"></p>
-        <input type="text" id="answer" placeholder="정답을 입력하세요" />
-        <button onclick="submitAnswer()">제출</button>
+        <input type="text" id="answer" />
+        <button id="submit" onclick="submitAnswer()">확인</button>
         <p id="result"></p>
         <button id="nextBtn" onclick="nextQuestion()" style="display:none;">다음</button>
     </div>
@@ -171,6 +173,8 @@
                 document.getElementById('answer').value = '';
                 document.getElementById('result').textContent = '';
                 document.getElementById('nextBtn').style.display = 'none';
+                document.getElementById('submit').style.display = 'inline';
+                document.getElementById('answer').style.display = 'inline';
             } else {
                 if (wrongAnswers.length > 0) {
                     document.getElementById('quiz-container').innerHTML = `
@@ -195,14 +199,14 @@
                 document.getElementById('result').textContent = "✅ 정답입니다!";
             } else {
                 document.getElementById('result').textContent = `❌ 오답입니다! 정답은 "${correctAnswer}"입니다.`;
-                input.classList.add('shake');
-                setTimeout(() => input.classList.remove('shake'), 300);
 
                 // 틀린 문제 저장 (중복 저장 방지)
                 wrongAnswers.push(shuffledQuiz[currentQuiz]);
             }
 
             document.getElementById('nextBtn').style.display = 'inline';
+            document.getElementById('submit').style.display = 'none';
+            document.getElementById('answer').style.display = 'none';
         }
 
         function nextQuestion() {
