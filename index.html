@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>퀴즈 프로그램</title>
+    <style>
+        /* 흔들리는 애니메이션 */
+        @keyframes shake {
+            0% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            50% {
+                transform: translateX(5px);
+            }
+
+            75% {
+                transform: translateX(-5px);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .shake {
+            animation: shake 0.3s;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        #quiz-container {
+            position: absolute;
+            top: 40%;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #answer {
+            width: 40%;
+            height: 5lvh;
+            margin-left: 50px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="quiz-container">
+        <p id="question"></p>
+        <input type="text" id="answer" placeholder="정답을 입력하세요" />
+        <button onclick="submitAnswer()">제출</button>
+        <p id="result"></p>
+        <button id="nextBtn" onclick="nextQuestion()" style="display:none;">다음</button>
+    </div>
+
+    <script>
+        const quizData = [
+            { question: "One crucial underlying factor is to change our [         ].\n한 가지 중요한 내재적 요소는 우리의 태도를 바꾸는 것입니다.", answer: "attitudes" },
+            { question: "Where does [          ] anger come from?\n청소년기의 화는 어디서부터 오는가?", answer: "adolescent" },
+            { question: "March marks the 100th anniversary of the death of [            ] fighter Ahn Jung-geun.\n3월은 독립투사인 안중근 의사의 순국 100주년을 맞는 달이다.", answer: "independence" },
+            { question: "That's the kind of [          ] you want to have happen.\n이런 것이 여러분이 원하는 일종의 참여수업이죠.", answer: "engagement" },
+            { question: "Stop being so [         ] and learn to take a joke,\n너무 예민하게 굴지 말고 농담을 받아들이는 법을 배우세요,", answer: "sensitive" },
+            { question: "I don't understand how I could have [          ] your name.\n어떻게 제가 귀하의 이름을 못 보고 넘어갈 수 있었는지 이해가 되지 않습니다.", answer: "overlooked" },
+            { question: "The number of Internet users has also been increasing [            ] in the region.\n아태 지역의 인터넷 사용자 수도 크게 증가하고 있다.", answer: "significantly" },
+            { question: "It may [       ] the friendship, or at worst, break the relationship.\n이것은 우정에 영향을 미치거나, 최악의 경우 관계를 깨뜨릴 수 있습니다.", answer: "affect" },
+            { question: "The phenomenon comes in many varieties, involving any [           ] of the senses.\n이 현상은 여러 감각의 조합을 수반하여 다양한 형태로 나타난다.", answer: "combination" },
+            { question: "I'm truly sorry for my [              ].\n저의 부주의에 대해 진심으로 사과드립니다.", answer: "thoughtlessness" },
+            { question: "It would also have [            ] the nuclear competition between the two Cold War rivals.\n그것은 또한 두 냉전 경쟁자들 사이의 핵 경쟁을 심화시켰을 것이다.", answer: "intensified" },
+            { question: "The tools we use to [        ] conflict shape our social landscape.\n분쟁을 해결하는데 사용하는 도구가 우리 사회의 모습을 형성합니다.", answer: "resolve" },
+            { question: "Despite these [          ], humanity has evolved.\n이러한 갈등이 발생하고 있음에도 불구하고, 인간은 진화했다.", answer: "conflicts" },
+            { question: "[         ] had quickly gathered and were shouting.\n군중이 빠르게 모여들어 외치고 있었다.", answer: "Crowds" },
+            { question: "They may seem [         ], but they avoid appearing inattentive or stupid.\n공격적으로 보일 수는 있어도 부주의하거나 바보같이 보이지는 않습니다.", answer: "aggressive" },
+            { question: "Less than five percent of all arrests are for [        ] crime.\n모든 체포기록의 겨우 5% 미만만이 폭력 범죄로 인한 것입니다.", answer: "violent" },
+            { question: "This way, you feel more energetic and [         ] during the day.\n이렇게 하면 낮 동안에 더 활기차고 생산적이라는 것을 느끼게 된다.", answer: "productive" },
+            { question: "Her mother heard the news from a [         ] from Naples.\n그녀의 어머니는 나폴리에서 온 한 난민으로부터 그 소식을 들었다.", answer: "refugee" },
+            { question: " [in particular], Europe has been a source of great inspiration for us.\n그중에서도 유럽은 우리에게 큰 영감을 주는 지역입니다.", answer: "in particular" },
+            { question: "It takes at least 20 minutes before your brain [         ] that the stomach is full.\n뇌는 위가 가득 찼다고 인식하는데 최소 20분이 걸린다.", answer: "recognizes" },
+            { question: "Take care of your [         ], mental, and emotional well-being.\n여러분의 신체적, 정신적, 그리고 정서적 행복을 돌보세요.", answer: "physical" },
+            { question: "They must be paid [        ] and in cash.\n현금으로 미리 지불해야 한다.", answer: "in advance" },
+            { question: "They were [        ] with exercise.\n그들은 운동을 해서 홍조를 띠고 있었다.", answer: "flushed" },
+            { question: "I forgot that he raised his hand, [         ] his fist.\n저는 그가 손을 들고 주먹을 쥐고 있다는 것을 잊었습니다.", answer: "clenched" },
+            { question: "A computer from the U.S. Bureau of Standards [           ] that her calculation was correct.\n미국 통계청 컴퓨터는 그녀의 계산이 매우 정확하다는 것을 확인해주었다.", answer: "confirmed" },
+            { question: "He succeeded in [         ] the local population to help his cause.\n그는 그의 주장을 지지하는 국내 단체를 조직하는 데 성공했다.", answer: "organizing" },
+            { question: "The government is also considering measures to [         ] an aging society.\n정부는 또 사회의 고령화에도 대책을 검토하고 있다.", answer: "cope with" },
+            { question: "This type of [         ] will never be effective.\n이러한 유형의 전략은 결코 효과적이지 않습니다.", answer: "strategy" },
+            { question: "As [         ] before, fast food has negative physical implications.\n앞서 언급했듯이, 패스트푸드는 부정적인 신체적 영향을 줄 수 있다.", answer: "mentioned" },
+            { question: "She [         ] expressed her concerns about the issue.\n그녀는 그 문제에 대해 말로 걱정을 표시했다.", answer: "verbally" },
+            { question: "Do we pursue happiness [         ]?\n우리는 적의를 갖고 행복을 추구하나요?", answer: "with hostility" },
+            { question: "The rain finally [       ].\n비가 마침내 그쳤다.", answer: "ceased" },
+            { question: "Your job as a mentor is to [         ] your mentees thinking.\n멘토로서 여러분의 역할은 여러분의 멘티의 사고를 촉진하는 것이다.", answer: "facilitate" },
+            { question: "So the cheap prices of unhealthy foods are [         ].\n그래서 싼 가격의 건강에 좋지 않은 음식은 매우 유혹적이다.", answer: "tempting" },
+            { question: "It happens by [         ] and practice outside mentoring sessions.\n이것은 멘토링 시간 밖에서의 성찰과 실천에 의해 발생한다.", answer: "reflection" },
+            { question: "Listening [         ] helps mentees to gain insight.\n공감하면서 경청하는 것은 멘티가 통찰을 얻게 한다.", answer: "empathically" },
+            { question: "My grandparents sell their [         ] jam at the local market.\n나의 조부모님은 지역 시장에서 유기농 잼을 판매하신다.", answer: "organic" },
+            { question: "I [         ] started searching for a way.\n나는 즉시 방법을 찾기 시작했다.", answer: "immediately" },
+            { question: "He [         ] the help he received.\n그는 받은 도움을 인정했다.", answer: "acknowledged" },
+            { question: "She donates a portion of her salary to [         ].\n그녀는 자신의 급여 일부를 자선단체에 기부한다.", answer: "charity" },
+            { question: "Regular exercise is [         ] to your health.\n규칙적인 운동은 건강에 유익하다.", answer: "advantageous" },
+            { question: "[         ] have different perspectives on various social issues.\n개인들은 다양한 사회 문제에 대해 다른 관점을 가진다.", answer: "individuals" },
+            { question: "The [         ] is that in order to be truly creative, one must master a field.\n그 근거는 진정으로 창의적으로 되려면 어떤 한 분야에 숙달해야 한다는 것이다.", answer: "rationale" },
+            { question: "This [         ] covers various fields of scientific study.\n이 분야는 과학연구의 다양한 분야를 다룬다.", answer: "domain" },
+            { question: "The investors receive direct rewards for their [         ].\n투자자들은 그들의 기여에 직접적인 보상을 받는다.", answer: "contribution" },
+            { question: "They were [         ] when I told them my idea.\n내 생각을 그들에게 말씀드렸을 때 그들은 아주 기뻐하셨다.", answer: "thrilled" },
+            { question: "Creativity often requires some level of [         ].\n창의력은 흔히 어느 정도의 전문성을 요구한다.", answer: "expertise" },
+            { question: "Your [         ] investors will want to see a clear schedule", answer: "potential" },
+            { question: "Consider all the necessary costs before deciding on the [         ].\n총액을 결정하기 전에 모든 필요한 비용을 고려해라.", answer: "amount" },
+            { question: "Computers can do millions of [         ] in the blink of an eye.\n컴퓨터는 눈 깜박할 사이에 수많은 계산을 할 수 있다.", answer: "calculations" },
+            { question: "All of these processes will only take [         ] three hours.\n이 모든 과정은 약 3시간 밖에 걸리지 않습니다.", answer: "approximately" },
+            { question: "Sometimes they have ceremonies to have a good [         ].\n때로 그들은 풍년을 기원하는 의식을 치르기도 한다.", answer: "harvest" },
+            { question: "[         ], doctors and patients all over the world are hopeful.\n그럼에도 불구하고, 전 세계의 의사들과 환자들은 희망적입니다.", answer: "Nonetheless" },
+            { question: "I filled out the form to [         ] the campaign.\n나는 캠페인을 시작하기 위해 양식을 작성했다.", answer: "launch" },
+            { question: "As expertise grows, creativity sometimes [         ].\n전문성이 커짐에 따라 창의력은 때때로 줄어든다.", answer: "diminishes" },
+            { question: "Bicycle [         ] is part of his drive for green growth.\n자전거 홍보는 녹색 성장을 위해 그가 추진하는 업무의 일부이다.", answer: "promotion" },
+            { question: "What about the data and [         ] software which we need in the future?\n미래에 필요한 자료와 의사 소통 프로그램은 어떤 것들이 있을까?", answer: "communication" },
+            { question: "People are willing to [         ] more, and the budgets are larger.\n사람들은 기꺼이 더 투자하려고 하고 그렇기 때문에 예산 또한 큽니다.", answer: "invest" },
+            { question: "Keep a positive attitude and focus on the [         ] you are making.\n긍정적인 태도를 유지하고 현재 진행 중인 발전에 집중하세요.", answer: "progress" },
+            { question: "I [         ] make a good first impression with our investors.\n나는 우리의 투자자들에게 좋은 첫인상을 남기고 싶었다.", answer: "was eager to" },
+            { question: "I got the [         ] that he was waiting for something to happen.\n나는 그가 무슨 일이 일어나기를 기다리는 듯한 인상을 받았다.", answer: "impression" },
+            { question: "It is a [         ] made up of two long molecules.\n두 개의 긴 분자로 구성된 화학 물질입니다.", answer: "chemical" },
+            { question: "In recent years, a new genre of westerns has [         ].\n최근 몇 년 동안에, 새로운 형태의 웨스턴 무비가 등장했다.", answer: "emerged" },
+            { question: "Ice cream is also made with many different [         ] now.\n이제 아이스크림은 여러 가지 다양한 재료로 만들어진다.", answer: "ingredients" },
+            { question: "We follow the script [         ] by our friends and family.\n우리는 친구와 가족에 의해 물려받는 각본을 따른다.", answer: "handed down" },
+            { question: "The art shows Kim's satirical view of the world [         ].\n이 작품은 세상을 전반적으로 바라보는 김씨의 풍자적인 시각을 보여준다.", answer: "at large" },
+            { question: "The president is the [         ] public figure in Korea.\n대통령은 최고의 공인이다.", answer: "supreme" },
+            { question: "These social [         ] are the invisible rules that guide your behavior each day.\n이러한 사회적 규범은 매일 여러분의 행동을 이끄는 보이지 않는 규칙이다.", answer: "norms" },
+            { question: "We have to [         ] that prevention is better than a cure.\n치료보다 예방이 더 중요하다는 것을 잊지 말아야 한다.", answer: "keep in mind" },
+            { question: "The [         ] and practices of life in society sweep us along.\n사회에서 삶의 관습과 관행은 우리의 정신을 온통 빼앗는다.", answer: "customs" },
+            { question: "They provide [         ] when everything else is expendable.\n그 외의 모든 것이 소모용일 때 그것들은 연속성을 제공한다.", answer: "continuity" },
+            { question: "We are operating with a [         ] urban planning deficit.\n우리는 종합적인 도시 계획이 결여된 채 운영하고 있습니다.", answer: "comprehensive" },
+            { question: "It's important [         ] good memories from your childhood.\n어렸을 때의 좋은 기억들을 유지하는 것이 중요하다.", answer: "to retain" },
+            { question: "Being [         ] is a key skill in a rapidly changing world.\n빠르게 변화하는 세상에서 적응력 있는 것이 중요한 기술이다.", answer: "adaptive" },
+            { question: "She has a [         ] voice that is easy to recognize.\n그녀는 쉽게 알아들을 수 있는 독특한 목소리를 가지고 있다.", answer: "distinctive" },
+            { question: "[         ] multiple projects at once requires good time management.\n여러 프로젝트를 한 번에 수행하는 것은 좋은 시간 관리가 필요하다.", answer: "Executing" },
+            { question: "They survived and [         ] better than before.\n그들은 이전보다 더 잘 생존하고 번식했다.", answer: "reproduced" },
+            { question: "Radio provided the driving force to [         ] the era of patronage.\n라디오가 애용의 시대를 확고히 하는 원동력을 제공했다.", answer: "solidify" }
+        ];
+
+        let currentQuiz = 0;
+        let shuffledQuiz = [];
+        let wrongAnswers = [];
+        let isRetryMode = false;
+
+        function shuffle(array) {
+            return array.sort(() => Math.random() - 0.5);
+        }
+
+        function loadQuestion() {
+            if (currentQuiz < shuffledQuiz.length) {
+                const formatted = shuffledQuiz[currentQuiz].question.replace(/\n/g, "<br>");
+                document.getElementById('question').innerHTML = formatted;
+                document.getElementById('answer').value = '';
+                document.getElementById('result').textContent = '';
+                document.getElementById('nextBtn').style.display = 'none';
+            } else {
+                if (wrongAnswers.length > 0) {
+                    document.getElementById('quiz-container').innerHTML = `
+          <h2>틀린 문제 ${wrongAnswers.length}개가 있습니다.</h2>
+          <button onclick="retryWrongQuestions()">다시 풀기</button>
+        `;
+                } else {
+                    document.getElementById('quiz-container').innerHTML = `
+          <h2>퀴즈 완료!</h2>
+          <p>모든 문제를 맞혔어요! 👏</p>
+        `;
+                }
+            }
+        }
+
+        function submitAnswer() {
+            const input = document.getElementById('answer');
+            const userAnswer = input.value.trim();
+            const correctAnswer = shuffledQuiz[currentQuiz].answer;
+
+            if (userAnswer === correctAnswer) {
+                document.getElementById('result').textContent = "✅ 정답입니다!";
+            } else {
+                document.getElementById('result').textContent = `❌ 오답입니다! 정답은 "${correctAnswer}"입니다.`;
+                input.classList.add('shake');
+                setTimeout(() => input.classList.remove('shake'), 300);
+
+                // 틀린 문제 저장 (중복 저장 방지)
+                wrongAnswers.push(shuffledQuiz[currentQuiz]);
+            }
+
+            document.getElementById('nextBtn').style.display = 'inline';
+        }
+
+        function nextQuestion() {
+            currentQuiz++;
+            loadQuestion();
+        }
+
+        function retryWrongQuestions() {
+            shuffledQuiz = shuffle([...wrongAnswers]);
+            wrongAnswers = []; // 새 틀린 문제 수집
+            currentQuiz = 0;
+            isRetryMode = true;
+
+            document.getElementById('quiz-container').innerHTML = `
+      <div id="question"></div>
+      <input type="text" id="answer" placeholder="정답 입력">
+      <button onclick="submitAnswer()">제출</button>
+      <div id="result"></div>
+      <button id="nextBtn" onclick="nextQuestion()" style="display:none;">다음</button>
+    `;
+
+            loadQuestion();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' && document.getElementById('answer')) {
+                    submitAnswer();
+                }
+            });
+
+            shuffledQuiz = shuffle([...quizData]);
+            loadQuestion();
+        });
+    </script>
+</body>
+
+</html>
