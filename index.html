@@ -470,6 +470,9 @@
                 if (e.key === 'Enter' && document.getElementById('answer')) {
                     submitAnswer();
                 }
+                else if(e.key === 'Enter' && document.getElementById('nextBtn').style.display != 'none') {
+                    nextQuestion()
+                }
             });
 
             shuffledQuiz = shuffle([...quizData]);
