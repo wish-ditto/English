@@ -467,15 +467,16 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             document.addEventListener('keydown', function (e) {
-                if (e.key === 'Enter' && document.getElementById('answer')) {
-                    submitAnswer();
-                }
                 if(e.key === 'Enter') {
                     if (document.getElementById('nextBtn').style.display == 'inline') {
                         nextQuestion();
-                        console.log("Gang");
+                        console.log("2");
                     }
-                    console.log("next");
+                    else if(document.getElementById('answer')) {
+                        submitAnswer();
+                        console.log("3")
+                    }
+                    console.log("1");
                 }
             });
 
