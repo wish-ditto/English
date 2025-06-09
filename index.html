@@ -470,9 +470,12 @@
                 if (e.key === 'Enter' && document.getElementById('answer')) {
                     submitAnswer();
                 }
-                else if(e.key === 'Enter' && document.getElementById('nextBtn').style.display == 'inline') {
-                    nextQuestion()
-                    console.log("next")
+                eif(e.key === 'Enter') {
+                    if (document.getElementById('nextBtn').style.display == 'inline') {
+                        nextQuestion();
+                        console.log("Gang");
+                    }
+                    console.log("next");
                 }
             });
 
