@@ -69,6 +69,7 @@
 <body>
     <div id="quiz-container">
         <p id="question"></p>
+        <p id="korean"></p>
         <input type="text" id="answer" />
         <button id="submit" onclick="submitAnswer()">확인</button>
         <p id="result"></p>
@@ -78,315 +79,403 @@
     <script>
         const quizData = [
   {
-    "question": "When you eat, blood rushes to the [     ] to help break down the food. \n당신이 식사를 할 때, 혈액은 음식을 분해하는 것을 돕기 위해 소화 기관으로 급히 움직인다.",
+    "question": "When you eat, blood rushes to the [     ] system to help break down the food.",   
+    "korean": "당신이 식사를 할 때, 혈액은 음식을 분해하는 것을 돕기 위해 소화 기관으로 급히 움직인다.",
     "answer": "digestive"
   },
   {
-    "question": "Scientists predict that [     ] will surpass human intelligence in five to 30 years. \n과학자들은 인공지능이 인간지능을 능가할 때를 짧게는 5년 뒤, 길게는 30년 뒤로 보고 있다.",
+    "question": "Scientists predict that [     ] will surpass human intelligence in five to 30 years.",
+    "korean": "과학자들은 인공지능이 인간지능을 능가할 때를 짧게는 5년 뒤, 길게는 30년 뒤로 보고 있다.",
     "answer": "artificial intelligence"
   },
   {
-    "question": "This led to a [     ] in the art community. \n이는 미술계에서 논란으로 이어졌다.",
+    "question": "This led to a [     ] in the art community.",
+    "korean": "이는 미술계에서 논란으로 이어졌다.",
     "answer": "controversy"
   },
   {
-    "question": "The pond accumulates organic matter over time and [     ] carbon. \n이 연못은 시간이 경과함에 따라 유기 물질을 축적하고 탄소를 흡수한다.",
+    "question": "The pond accumulates organic matter over time and [     ] carbon.",
+    "korean": "이 연못은 시간이 경과함에 따라 유기 물질을 축적하고 탄소를 흡수한다.",
     "answer": "absorbs"
   },
   {
-    "question": "There are [     ] AI programs that can create various forms of art. \n다양한 형태의 예술을 만들어 낼 수 있는 많은 인공 지능 프로그램들이 있다.",
+    "question": "There are [     ] AI programs that can create various forms of art.",
+    "korean": "다양한 형태의 예술을 만들어 낼 수 있는 많은 인공 지능 프로그램들이 있다.",
     "answer": "numerous"
   },
   {
-    "question": "This happens in order to [     ] your muscles with the oxygen and nutrients. \n이는 당신의 근육에게 그것이 필요로 하는 산소와 영양분을 공급하기 위해 일어난다.",
+    "question": "This happens in order to [     ] your muscles with the oxygen and nutrients.",    
+    "korean": "이는 당신의 근육에게 그것이 필요로 하는 산소와 영양분을 공급하기 위해 일어난다.",   
     "answer": "supply"
   },
   {
-    "question": "AI image [     ] create images based on our text requests. \n인공 지능 그림 생성기들은 우리의 텍스트 요청에 기반하여 그림을 생성한다.",
+    "question": "AI image [     ] create images based on our text requests.",
+    "korean": "인공 지능 그림 생성기들은 우리의 텍스트 요청에 기반하여 그림을 생성한다.",
     "answer": "generators"
   },
   {
-    "question": "Milk contains many [     ]. \n우유는 많은 영양소들을 포함하고 있다.",
+    "question": "Milk contains many [     ].",
+    "korean": "우유는 많은 영양소들을 포함하고 있다.",
     "answer": "nutrients"
   },
   {
-    "question": "They have the ability [     ] millions of images and their corresponding descriptions. \n그들은 수백만 개의 그림과 그에 상응하는 설명을 분석할 능력을 갖고 있다.",
+    "question": "They have the ability [     ] millions of images and their corresponding descriptions.",
+    "korean": "그들은 수백만 개의 그림과 그에 상응하는 설명을 분석할 능력을 갖고 있다.",
     "answer": "to analyze"
   },
   {
-    "question": "This is why exercising on a [     ] empty stomach can be such a challenge. \n이것이 당신이 완전히 빈속에 운동하는 것이 그렇게나 힘들 수 있는 이유이다.",
+    "question": "This is why exercising on a [     ] empty stomach can be such a challenge.",      
+    "korean": "이것이 당신이 완전히 빈속에 운동하는 것이 그렇게나 힘들 수 있는 이유이다.",
     "answer": "completely"
   },
   {
-    "question": "Each student received a [     ] grade for effort. \n각 학생은 노력에 상응하는 성적을 받았다.",
+    "question": "Each student received a [     ] grade for effort.",
+    "korean": "각 학생은 노력에 상응하는 성적을 받았다.",
     "answer": "corresponding"
   },
   {
-    "question": "Some people end up [     ] nausea and headaches. \n어떤 사람들은 결국 구역감과 두통을 겪게 된다.",
+    "question": "Some people end up [     ] nausea and headaches.",
+    "korean": "어떤 사람들은 결국 구역감과 두통을 겪게 된다.",
     "answer": "suffering from"
   },
   {
-    "question": "AI programs can mix the styles of [     ] images upon request. \n인공 지능 프로그램들은 요청에 따라 현존하는 그림들의 화풍을 혼합할 수 있다.",
+    "question": "AI programs can mix the styles of [     ] images upon request.",
+    "korean": "인공 지능 프로그램들은 요청에 따라 현존하는 그림들의 화풍을 혼합할 수 있다.",       
     "answer": "existing"
   },
   {
-    "question": "They worked so hard they [     ] in the fields. \n고되게 일하고 밭에서 쓰러지기도 했다.",
+    "question": "They worked so hard they [     ] in the fields.",
+    "korean": "고되게 일하고 밭에서 쓰러지기도 했다.",
     "answer": "fainted"
   },
   {
-    "question": "I suggest that you wait between one and a half and three hours after eating a [     ]-sized meal. \n나는 당신이 적정량의 식사를 한 후 1시간 30분에서 3시간 사이를 기다릴 것을 권장한다.",
-    "answer": "moderate-sized"
+    "question": "I suggest that you wait between one and a half and three hours after eating a [     ]-sized meal.",
+    "korean": "나는 당신이 적정량의 식사를 한 후 1시간 30분에서 3시간 사이를 기다릴 것을 권장한다.",
+    "answer": "moderate"
   },
   {
-    "question": "These programs have sparked a debate over their [     ] on humans. \n이러한 프로그램들은 인간에게 미치는 그들의 영향력에 관해 논쟁을 불러일으켰다.",
+    "question": "These programs have sparked a debate over their [     ] on humans.",
+    "korean": "이러한 프로그램들은 인간에게 미치는 그들의 영향력에 관해 논쟁을 불러일으켰다.",     
     "answer": "impact"
   },
   {
-    "question": "AI may imitate the styles of human artists without their [     ]. \nAI가 인간 예술가의 동의 없이 그들의 화풍을 모방할지도 모른다.",
+    "question": "AI may imitate the styles of human artists without their [     ].",
+    "korean": "AI가 인간 예술가의 동의 없이 그들의 화풍을 모방할지도 모른다.",
     "answer": "consent"
   },
   {
-    "question": "They cannot [     ] human imagination. \n그들은 인간의 상상력을 뛰어넘을 수 없다.",
+    "question": "They cannot [     ] human imagination.",
+    "korean": "그들은 인간의 상상력을 뛰어넘을 수 없다.",
     "answer": "exceed"
   },
   {
-    "question": "A dependence on imperfect data with little [     ] eventually limits the output of AI programs. \n다양성이 거의 없는 불완전한 정보에의 의존은 결국 인공 지능 프로그램의 결과물을 제한한다.",
+    "question": "A dependence on imperfect data with little [     ] eventually limits the output of AI programs.",
+    "korean": "다양성이 거의 없는 불완전한 정보에의 의존은 결국 인공 지능 프로그램의 결과물을 제한 한다.",
     "answer": "diversity"
   },
   {
-    "question": "Human imagination has no limits or [     ]. \n인간의 상상력은 한계나 경계가 없다.",
+    "question": "Human imagination has no limits or [     ].",
+    "korean": "인간의 상상력은 한계나 경계가 없다.",
     "answer": "boundaries"
   },
   {
-    "question": "We need to figure out how to use AI tools [     ]. \n우리는 인공지능 도구를 윤리적으로 사용하는 방법을 알아낼 필요가 있다.",
+    "question": "We need to figure out how to use AI tools [     ].",
+    "korean": "우리는 인공지능 도구를 윤리적으로 사용하는 방법을 알아낼 필요가 있다.",
     "answer": "ethically"
   },
   {
-    "question": "[     ] with others improves creativity. \n다른 사람들과 협력하는 것은 창의성을 향상시킨다.",
+    "question": "[     ] with others improves creativity.",
+    "korean": "다른 사람들과 협력하는 것은 창의성을 향상시킨다.",
     "answer": "Collaborating"
   },
   {
-    "question": "Supertasters are more sensitive to certain sweet and bitter [     ]. \n미각이 뛰어난 사람은 단맛과 쓴맛이 나는 특정한 재료에 더 민감하다.",
+    "question": "Supertasters are more sensitive to certain sweet and bitter [     ].",
+    "korean": "미각이 뛰어난 사람은 단맛과 쓴맛이 나는 특정한 재료에 더 민감하다.",
     "answer": "substances"
   },
   {
-    "question": "They are less likely to [     ] sweets. \n그들은 단 음식을 덜 좋아할 수 있다.",
-    "answer": "be fond of"
+    "question": "They are less likely to [     ] of sweets.",
+    "korean": "그들은 단 음식을 덜 좋아할 수 있다.",
+    "answer": "be fond"
   },
   {
-    "question": "The topic is how to [     ] flavors in food that are good for health. \n건강에 좋은 음식의 맛을 식별하는 방법이 주제이다.",
+    "question": "The topic is how to [     ] flavors in food that are good for health.",
+    "korean": "건강에 좋은 음식의 맛을 식별하는 방법이 주제이다.",
     "answer": "identify"
   },
   {
-    "question": "Every society has its [     ] “police officers” or gatekeepers. \n모든 사회에는 인지적 경찰관 또는 문지기가 있다.",
+    "question": "Every society has its [     ] “police officers” or gatekeepers.",
+    "korean": "모든 사회에는 인지적 경찰관 또는 문지기가 있다.",
     "answer": "cognitive"
   },
   {
-    "question": "Such [     ] human rights should not be ignored for political purposes. \n그러한 기본적 인권은 정치적 목적으로 무시되어서는 안 된다.",
+    "question": "Such [     ] human rights should not be ignored for political purposes.",
+    "korean": "그러한 기본적 인권은 정치적 목적으로 무시되어서는 안 된다.",
     "answer": "fundamental"
   },
   {
-    "question": "The IOC is responsible for [     ] the international sports event. \nIOC는 국제 스포츠 대회를 감독하는 역할을 한다.",
+    "question": "The IOC is responsible for [     ] the international sports event.",
+    "korean": "IOC는 국제 스포츠 대회를 감독하는 역할을 한다.",
     "answer": "overseeing"
   },
   {
-    "question": "They are believed to have [     ] the knowledge and wisdom of the society. \n그들은 그 사회에 대한 지식과 지혜를 축적해왔다고 여겨진다.",
+    "question": "They are believed to have [     ] the knowledge and wisdom of the society.",      
+    "korean": "그들은 그 사회에 대한 지식과 지혜를 축적해왔다고 여겨진다.",
     "answer": "accumulated"
   },
   {
-    "question": "Building codes can reduce the [     ] impacts of hazards. \n건축 법규는 위험 요소로 인한 해로운 영향을 줄일 수 있다.",
+    "question": "Building codes can reduce the [     ] impacts of hazards.",
+    "korean": "건축 법규는 위험 요소로 인한 해로운 영향을 줄일 수 있다.",
     "answer": "adverse"
   },
   {
-    "question": "You get [     ] pay for that? \n그걸로 위험 수당을 받니?",
+    "question": "You get [     ] pay for that?",
+    "korean": "그걸로 위험 수당을 받니?",
     "answer": "hazard"
   },
   {
-    "question": "Earthquake codes are designed to prevent buildings from [     ]. \n지진 법규는 건물이 붕괴되는 것을 방지하기 위해서 고안된 것이다.",
+    "question": "Earthquake codes are designed to prevent buildings from [     ].",
+    "korean": "지진 법규는 건물이 붕괴되는 것을 방지하기 위해서 고안된 것이다.",
     "answer": "collapsing"
   },
   {
-    "question": "Building codes are the [     ] of public policy. \n건축 법규는 공공 정책의 산물이다.",
+    "question": "Building codes are the [     ] of public policy.",
+    "korean": "건축 법규는 공공 정책의 산물이다.",
     "answer": "offspring"
   },
   {
-    "question": "Policy may be ignored or not [     ]. \n정책은 무시되거나 시행되지 않을 수도 있다.",
+    "question": "Policy may be ignored or not [     ].",
+    "korean": "정책은 무시되거나 시행되지 않을 수도 있다.",
     "answer": "enforced"
   },
   {
-    "question": "That should make companies more humble, [     ] and human. \n그것이 기업을 더 겸손하게, 더 취약하게, 더 인간적으로 만들 것이다.",
+    "question": "That should make companies more humble, [     ] and human.",
+    "korean": "그것이 기업을 더 겸손하게, 더 취약하게, 더 인간적으로 만들 것이다.",
     "answer": "vulnerable"
   },
   {
-    "question": "She felt [     ] before the big interview. \n그녀는 중요한 면접 전에 불안을 느꼈다.",
+    "question": "She felt [     ] before the big interview.",
+    "korean": "그녀는 중요한 면접 전에 불안을 느꼈다.",
     "answer": "anxiety"
   },
   {
-    "question": "Listening to others gives us different [     ]. \n다른 사람들의 말을 들으면 다양한 관점을 얻을 수 있다.",
+    "question": "Listening to others gives us different [     ].",
+    "korean": "다른 사람들의 말을 들으면 다양한 관점을 얻을 수 있다.",
     "answer": "perspectives"
   },
   {
-    "question": "All the [     ] arrived nervous. \n모든 피실험자는 긴장한 채로 도착했다.",
+    "question": "All the [     ] arrived nervous.",
+    "korean": "모든 피실험자는 긴장한 채로 도착했다.",
     "answer": "subjects"
   },
   {
-    "question": "The [     ] did not receive any special treatment. \n대조군은 어떤 특별한 처치도 받지 않았다.",
+    "question": "The [     ] did not receive any special treatment.",
+    "korean": "대조군은 어떤 특별한 처치도 받지 않았다.",
     "answer": "control group"
   },
   {
-    "question": "They [     ] the old factory into a modern art gallery. \n그들은 오래된 공장을 현대 미술관으로 바꾸었다.",
+    "question": "They [     ] the old factory into a modern art gallery.",
+    "korean": "그들은 오래된 공장을 현대 미술관으로 바꾸었다.",
     "answer": "converted"
   },
   {
-    "question": "Knowledge is [     ] by evidence and reason. \n지식은 증거와 이성에 의해 정당화된다.",
+    "question": "Knowledge is [     ] by evidence and reason.",
+    "korean": "지식은 증거와 이성에 의해 정당화된다.",
     "answer": "justified"
   },
   {
-    "question": "Her teaching [     ] focuses on respect, curiosity, and collaboration. \n그녀의 교육 철학은 존중, 호기심, 협력을 중시한다.",
+    "question": "Her teaching [     ] focuses on respect, curiosity, and collaboration.",
+    "korean": "그녀의 교육 철학은 존중, 호기심, 협력을 중시한다.",
     "answer": "philosophy"
   },
   {
-    "question": "This reflects the philosophical [     ] for certainty. \n이것은 확실성에 관한 철학적 추구를 반영한다.",
+    "question": "This reflects the philosophical [     ] for certainty.",
+    "korean": "이것은 확실성에 관한 철학적 추구를 반영한다.",
     "answer": "quest"
   },
   {
-    "question": "Reason should take [     ] over observation. \n이성은 관찰에 우선해야 한다.",
+    "question": "Reason should take [     ] over observation.",
+    "korean": "이성은 관찰에 우선해야 한다.",
     "answer": "priority"
   },
   {
-    "question": "Descartes was aware that his senses [     ] misled him. \n데카르트는 감각이 자주 자신을 오도한다는 것을 알고 있었다.",
+    "question": "Descartes was aware that his senses [     ] misled him.",
+    "korean": "데카르트는 감각이 자주 자신을 오도한다는 것을 알고 있었다.",
     "answer": "frequently"
   },
   {
-    "question": "If the evidence of our senses did not [     ] reason, it was likely that they were in error. \n감각의 증거가 이성과 일치하지 않으면, 그것들은 오류에 빠질 가능성이 있다.",
+    "question": "If the evidence of our senses did not [     ] reason, it was likely that they were in error.",
+    "korean": "감각의 증거가 이성과 일치하지 않으면, 그것들은 오류에 빠질 가능성이 있다.",
     "answer": "conform to"
   },
   {
-    "question": "How to [     ] talent is the same regardless of age or country. \n인재를 얻는 방법은 동서고금이 다르지 않다.",
+    "question": "How to [     ] talent is the same regardless of age or country.",
+    "korean": "인재를 얻는 방법은 동서고금이 다르지 않다.",
     "answer": "obtain"
   },
   {
-    "question": "Sugarcane was a very labor-[     ] crop. \n사탕수수는 굉장히 노동집약적인 작물이었다.",
+    "question": "Sugarcane was a very labor-[     ] crop.",
+    "korean": "사탕수수는 굉장히 노동집약적인 작물이었다.",
     "answer": "intensive"
   },
   {
-    "question": "This map shows the presence of [     ] on the planet. \n이 지도는 지구의 농업 현황을 보여준다.",
+    "question": "This map shows the presence of [     ] on the planet.",
+    "korean": "이 지도는 지구의 농업 현황을 보여준다.",
     "answer": "agriculture"
   },
   {
-    "question": "We can move forward and find [     ] solutions to the problems. \n우리는 앞으로 나아가서 문제들에 대한 적절한 해답을 찾을 수 있다.",
+    "question": "We can move forward and find [     ] solutions to the problems.",
+    "korean": "우리는 앞으로 나아가서 문제들에 대한 적절한 해답을 찾을 수 있다.",
     "answer": "relevant"
   },
   {
-    "question": "This [     ] subsistence system has a particularly high output per unit of land. \n이러한 원시적 생존 체계는 단위 토지당 생산량이 특히 높다.",
+    "question": "This [     ] subsistence system has a particularly high output per unit of land.",
+    "korean": "이러한 원시적 생존 체계는 단위 토지당 생산량이 특히 높다.",
     "answer": "primitive"
   },
   {
-    "question": "It is [     ] for their First Class and Business Class guests. \n이것은 그들의 퍼스트 클래스와 비즈니스 클래스 손님들을 위해 이용 가능하다.",
+    "question": "It is [     ] for their First Class and Business Class guests.",
+    "korean": "이것은 그들의 퍼스트 클래스와 비즈니스 클래스 손님들을 위해 이용 가능하다.",        
     "answer": "available"
   },
   {
-    "question": "The irrigation canals can be used for boat [     ] of food to the town. \n용수로는 배로 식량을 마을까지 옮기는 데 사용될 수 있다.",
+    "question": "The irrigation canals can be used for boat [     ] of food to the town.",
+    "korean": "용수로는 배로 식량을 마을까지 옮기는 데 사용될 수 있다.",
     "answer": "transport"
   },
   {
-    "question": "Another advantage to using this method is that it is [     ] to poorer, developing countries. \n이 방식의 또 다른 장점으로는 가난한 개발도상국에서도 사용이 가능하다는 것이다.",
+    "question": "Another advantage to using this method is that it is [     ] to poorer, developing countries.",
+    "korean": "이 방식의 또 다른 장점으로는 가난한 개발도상국에서도 사용이 가능하다는 것이다.",    
     "answer": "accessible"
   },
   {
-    "question": "The water [     ] cannot be used for drinking water in California cities. \n소비된 물은 캘리포니아주 도시에서 식수로 사용될 수 없다.",
+    "question": "The water [     ] cannot be used for drinking water in California cities.",       
+    "korean": "소비된 물은 캘리포니아주 도시에서 식수로 사용될 수 없다.",
     "answer": "consumed"
   },
   {
-    "question": "We have to make choices about how to [     ] our limited resources. \n우리는 우리의 제한된 자원을 어떻게 배분할지 선택해야 한다.",
+    "question": "We have to make choices about how to [     ] our limited resources.",
+    "korean": "우리는 우리의 제한된 자원을 어떻게 배분할지 선택해야 한다.",
     "answer": "allocate"
   },
   {
-    "question": "Not all [     ] that improve human living standards show up in revenue and profits. \n인간의 생활 수준을 향상하는 모든 혁신이 수입과 수익에 나타나는 것은 아니다.",
+    "question": "Not all [     ] that improve human living standards show up in revenue and profits.",
+    "korean": "인간의 생활 수준을 향상하는 모든 혁신이 수입과 수익에 나타나는 것은 아니다.",       
     "answer": "innovations"
   },
   {
-    "question": "Technology [     ] many of the product improvements. \n기술이 많은 제품의 개선을 초래했다.",
+    "question": "Technology [     ] many of the product improvements.",
+    "korean": "기술이 많은 제품의 개선을 초래했다.",
     "answer": "brought about"
   },
   {
-    "question": "We can also think about it as kind of a large [     ]. \n우리는 이것을 일종의 대형 유기체로 볼 수 있다.",
+    "question": "We can also think about it as kind of a large [     ].",
+    "korean": "우리는 이것을 일종의 대형 유기체로 볼 수 있다.",
     "answer": "organism"
   },
   {
-    "question": "[     ] people used to pay $1 to download a song. \n사람들이 어떤 노래를 다운로드하기 위해 1달러를 냈다고 가정해 보라.",
+    "question": "[     ] people used to pay $1 to download a song.",
+    "korean": "사람들이 어떤 노래를 다운로드하기 위해 1달러를 냈다고 가정해 보라.",
     "answer": "Suppose"
   },
   {
-    "question": "They are understandably [     ] give up the attitudes and practices. \\n그들은 그 태도와 관행을 포기하는 것을 당연히 꺼린다.",
+    "question": "Failure is merely a temporary obstacle on the [     ] to success.",
+    "korean": "실패는 그저 성공을 향한 여정의 일시적인 장애물일 뿐이다.",
+    "answer": "journey"
+  },
+  {
+    "question": "They are understandably [     ] give up the attitudes and practices.",
+    "korean": "그들은 그 태도와 관행을 포기하는 것을 당연히 꺼린다.",
     "answer": "reluctant to"
   },
   {
-    "question": "Please [     ] that it may take up to two weeks for your order to arrive. \n주문이 도착하는 데 최대 2주가 걸릴 수 있다는 것을 알고 계십시오.",
+    "question": "Please [     ] that it may take up to two weeks for your order to arrive.",       
+    "korean": "주문이 도착하는 데 최대 2주가 걸릴 수 있다는 것을 알고 계십시오.",
     "answer": "be aware"
   },
   {
-    "question": "ID numbers are used in almost every aspect of society from voting to [     ]. \n주민증 번호는 투표부터 취업까지 거의 모든 사회 활동에서 사용되고 있다.",
+    "question": "ID numbers are used in almost every aspect of society from voting to [     ].",   
+    "korean": "주민증 번호는 투표부터 취업까지 거의 모든 사회 활동에서 사용되고 있다.",
     "answer": "employment"
   },
   {
-    "question": "Because this is the [     ] that the planet went into the star. \n왜냐하면 이것은 항성이 행성을 집어삼켰다는 증거일 뿐이기 때문이다.",
+    "question": "Because this is the [     ] that the planet went into the star.",
+    "korean": "왜냐하면 이것은 항성이 행성을 집어삼켰다는 증거일 뿐이기 때문이다.",
     "answer": "indication"
   },
   {
-    "question": "Time is [     ] for man only because there are others that must remain unsatisfied. \n인간에게 시간이 부족한 이유는 충족되지 않은 채로 남아야 하는 다른 것이 존재하기 때문이다.",
+    "question": "Time is [     ] for man only because there are others that must remain unsatisfied.",
+    "korean": "인간에게 시간이 부족한 이유는 충족되지 않은 채로 남아야 하는 다른 것이 존재하기 때문이다.",
     "answer": "scarce"
   },
   {
-    "question": "His time is [     ]. \n그의 시간은 충분하다.",
+    "question": "His time is [     ].",
+    "korean": "그의 시간은 충분하다.",
     "answer": "sufficient"
   },
   {
-    "question": "Many patients [     ] radiation therapy. \n많은 환자들이 방사능 치료법을 선호한다.",
+    "question": "Many patients [     ] radiation therapy.",
+    "korean": "많은 환자들이 방사능 치료법을 선호한다.",
     "answer": "favor"
   },
   {
-    "question": "Symptoms do show before accidents [     ]. \n사고가 발생하기 전에 증상이 나타나기 마련이다.",
+    "question": "Symptoms do show before accidents [     ].",
+    "korean": "사고가 발생하기 전에 증상이 나타나기 마련이다.",
     "answer": "take place"
   },
   {
-    "question": "DNA carries [     ] information. \nDNA는 유전 정보를 운반한다.",
+    "question": "DNA carries [     ] information.",
+    "korean": "DNA는 유전 정보를 운반한다.",
     "answer": "genetic"
   },
   {
-    "question": "The couple tested positive for the [     ]. \n부부는 변이 바이러스에 양성 반응을 보였다.",
+    "question": "The couple tested positive for the [     ].",
+    "korean": "부부는 변이 바이러스에 양성 반응을 보였다.",
     "answer": "variant"
   },
   {
-    "question": "Climate change threatens the polar bear [     ]. \n기후 변화가 북극곰 개체군을 위협하고 있다.",
+    "question": "Climate change threatens the polar bear [     ].",
+    "korean": "기후 변화가 북극곰 개체군을 위협하고 있다.",
     "answer": "population"
   },
   {
-    "question": "There is another side of this [     ] related to human impacts. \n인간의 영향과 관련된 이 현상의 또 다른 측면이 있다.",
+    "question": "He remained strong [     ] adversity.",
+    "korean": "그는 역경에 직면해서도 강인함을 유지했다.",
+    "answer": "in the face of"
+  },
+  {
+    "question": "There is another side of this [     ] related to human impacts.",
+    "korean": "인간의 영향과 관련된 이 현상의 또 다른 측면이 있다.",
     "answer": "phenomenon"
   },
   {
-    "question": "Some plants are [     ] of extreme heat and drought. \n어떤 식물은 극심한 더위와 가뭄에 내성이 있다.",
+    "question": "Some plants are [     ] of extreme heat and drought.",
+    "korean": "어떤 식물은 극심한 더위와 가뭄에 내성이 있다.",
     "answer": "tolerant"
   },
   {
-    "question": "Farmers use different [     ] to protect crops. \n농부들은 작물을 보호하기 위해 다양한 농약들을 사용한다.",
+    "question": "Farmers use different [     ] to protect crops.",
+    "korean": "농부들은 작물을 보호하기 위해 다양한 농약들을 사용한다.",
     "answer": "pesticides"
   },
   {
-    "question": "The monkey receiving plain old cucumbers became [     ]. \n평범한 오이를 받은 원숭이는 격분하였다.",
+    "question": "The monkey receiving plain old cucumbers became [     ].",
+    "korean": "평범한 오이를 받은 원숭이는 격분하였다.",
     "answer": "enraged"
   },
   {
-    "question": "Two monkeys were [     ] perfectly content with a reward. \n두 마리의 원숭이는 보상에 처음에는 완벽하게 만족했다.",
+    "question": "Two monkeys were [     ] perfectly content with a reward.",
+    "korean": "두 마리의 원숭이는 보상에 처음에는 완벽하게 만족했다.",
     "answer": "initially"
   },
   {
-    "question": "She has [     ] control over the entire project. \n그녀는 그 프로젝트 전체에 대해 절대적인 통제권을 갖고 있다.",
+    "question": "She has [     ] control over the entire project.",
+    "korean": "그녀는 그 프로젝트 전체에 대해 절대적인 통제권을 갖고 있다.",
     "answer": "absolute"
   },
   {
-    "question": "They built a tank [     ] the chemicals safely. \n그들은 화학물질을 안전하게 담기 위해 탱크를 만들었다.",
+    "question": "They built a tank [     ] the chemicals safely.",
+    "korean": "그들은 화학물질을 안전하게 담기 위해 탱크를 만들었다.",
     "answer": "to contain"
   }
 ];
@@ -402,8 +491,8 @@
 
         function loadQuestion() {
             if (currentQuiz < shuffledQuiz.length) {
-                const formatted = shuffledQuiz[currentQuiz].question.replace(/\n/g, "<br>");
-                document.getElementById('question').innerHTML = formatted;
+                document.getElementById('question').innerHTML = shuffledQuiz[currentQuiz].question;
+                document.getElementById('korean').innerHTML = shuffledQuiz[currentQuiz].korean;
                 document.getElementById('answer').value = '';
                 document.getElementById('result').textContent = '';
                 document.getElementById('nextBtn').style.display = 'none';
@@ -456,6 +545,7 @@
 
             document.getElementById('quiz-container').innerHTML = `
       <div id="question"></div>
+      <div id="korean"></div>
       <input type="text" id="answer" placeholder="정답 입력">
       <button onclick="submitAnswer()">제출</button>
       <div id="result"></div>
