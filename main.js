@@ -291,9 +291,9 @@ document.addEventListener('DOMContentLoaded', () => {
             translation: "약한 신호로 인해 사진의 화질이 나빴다."
         },
         {
-            sentence: "His [        ] settings werer turned off.",
+            sentence: "His [        ] settings were turned off.",
             answer: "location",
-            translation: "그의 우치 설정이 꺼져 있었다."
+            translation: "그의 위치 설정이 꺼져 있었다."
         },
         {
             sentence: "He had spent one night in difficult [          ].",
@@ -326,183 +326,183 @@ document.addEventListener('DOMContentLoaded', () => {
             translation: "그것은 그에게 최근의 산불을 떠올리게 했다."
         },
         {
-            sentence: "",
-            answer: "transformations",
-            translation: "지난 수 십년 동안, 세계는 커다란 전환을 경험했다."
+            sentence: "This helped her to [     ] his location.",
+            answer: "infer",
+            translation: "이것은 그가 그녀의 거의 정확한 위치를 추론하도록 도와주었다."
         },
         {
-            sentence: "We can [     ] nature, but in some ways also improve upon it.",
-            answer: "mimic",
-            translation: "우리는 자연을 모방하지만 어느 정도는 개선할 수도 있다."
+            sentence: "They provided [           ] measurements.",
+            answer: "approximate",
+            translation: "그들은 대략적인 측정치를 제공했다."
         },
         {
-            sentence: "They have [          ] this field for many years.",
-            answer: "cultivated",
-            translation: "그들은 이 밭을 여러 해 동안 경작해왔다."
+            sentence: "The island [       ] was breathtaking at sunset.",
+            answer: "scenery",
+            translation: "섬 풍경은 일몰에 숨 막히게 아름다웠다."
         },
         {
-            sentence: "[            ] enables species to maintain their populations through genetic transmission.",
-            answer: "Reproduction",
-            translation: "생식은 유전자 전달을 통해 종이 개체수를 유지할 수 있게 한다."
+            sentence: "The new phone boasts many impressive [        ].",
+            answer: "features",
+            translation: "새 휴대폰은 많은 인상적인 특징들을 자랑한다."
         },
         {
-            sentence: "Crops that [       ] or were stored after harvesting attracted rats and mice.",
-            answer: "ripened",
-            translation: "익거나 수확 후 저장된 농작물은 쥐, 생쥐를 끌어들였다."
+            sentence: "The new technology has enormous [         ] to revolutionize daily life.",
+            answer: "potential",
+            translation: "새로운 기술은 일상생활을 혁신할 엄청난 잠재력을 가졌다."
         },
         {
-            sentence: "Water pools provided [        ] for mosquitoes.",
-            answer: "habitats",
-            translation: "물웅덩이는 모기에게 서식지를 제공했다."
+            sentence: "The researcher [                         ] similar findings from previous studies.",
+            answer: "compared the results with",
+            translation: "그 연구자는 결과를 이전 연구의 유사한 결과와 비교했다."
         },{
-            sentence: "Scientists made careful [           ] of the experiment's results.",
-            answer: "observation",
-            translation: "과학자들이 실험 결과를 주의 깊게 관찰했다." 
+            sentence: "The red light [          ] a system error",
+            answer: "indicates",
+            translation: "빨간불은 시스템 오류를 나타낸다." 
         },
         {
-            sentence: "They'll monitor the post to [     ] the volume of reactions.",
-            answer: "gauge",
-            translation: "그들은 반응의 양을 측정하기 위해 게시물을 추적 관찰한다."
+            sentence: "The [] meticulously gathered evidence from the old house.",
+            answer: "detective",
+            translation: "탐정은 오래된 버려진 집에서 증거를 꼼꼼하게 수집했다."
         },
         {
-            sentence: "Their aim of posting is to earn recognition for what they're sharing as a way to [            ].",
-            answer: "self-enhance",
-            translation: "그들의 게시 목표는 자신을 고양하는 하나의 방법으로서 공유하고 있는 것에 대한 인정을 받는 것이다."
+            sentence: "we planned the best [] to avoid heavy traffic.",
+            answer: "route",
+            translation: "우리는 교통 체증을 피할 최적의 경로를 계획했다."
         },
         {
-            sentence: "Researchers have discovered one peculiar behaviour that [                    ].",
-            answer: "sets teenagers apart",
-            translation: "연구자들은 10대들을 구별 짓는 독특한 행동 하나를 발견했다."
+            sentence: "[] never leave a crime scene without leaving behind traces.",
+            answer: "Criminals",
+            translation: "범죄자들은 범죄 현장에 흔적을 남기지 않고 가는 법이 결코 없다."
         },
         {
-            sentence: "[          ] usually anticipate negative outcomes in any given situation.",
-            answer: "Pessimists",
-            translation: "비관론자들은 보통 어떤 상황에서든 부정적인 결과를 예상한다."
+            sentence: "The team will [] the market trends carefully",
+            answer: "analyze",
+            translation: "팀은 시장 동향을 신중하게 분석할 것이다."
         },
         {
-            sentence: "A doomer [        ] that the world will end in five years.",
-            answer: "predicts",
-            translation: "어떤 운명론자가 5년 내에 세상이 끝날 것이라고 예측한다."
+            sentence: "Her [] brought a sense of calm to the chaotic situation.",
+            answer: "presence",
+            translation: "그녀의 존재는 혼란스러운 상황에 평온함을 가져왔다."
         },
         {
-            sentence: "His performance was an [     ] failure.",
-            answer: "utter",
-            translation: "그의 공연은 완전한 실패였다."
+            sentence: "They made a [] by investing early in the tech company.",
+            answer: "fortune",
+            translation: "그들은 그 기술 회사에 일찍 투자하여 큰 재산을 벌었다."
         },
         {
-            sentence: "System [          ] lead to errors.",
-            answer: "breakdowns",
-            translation: "시스템 고장들이 오류를 초래한다."
+            sentence: "The [] seminar was being attended by doctors from the US.",
+            answer: "annual",
+            translation: "매해의 세미나에는 미국에서 온 의사들이 참석하고 있었다."
         },
         {
-            sentence: "The player took an aggressive [      ].",
-            answer: "stance",
-            translation: "선수는 공격적인 자세를 취했다."
+            sentence: "They carefully collect all the possible [].",
+            answer: "evidence",
+            translation: "그들은 모든 가능한 증거를 주의 깊게 수집한다."
         },
         {
-            sentence: "He realized that the solution to the problem was [       ].",
-            answer: "obvious",
-            translation: "그는 문제의 해결책이 명백하다는 것을 깨달았다."
+            sentence: "It has [] thanks to the contributions of many researchers.",
+            answer: "evolved",
+            translation: "이것은 많은 연구자들의 기여 덕분에 발전해 왔다."
         },
         {
-            sentence: "The meeting [          ] yesterday afternoon.",
-            answer: "took place",
-            translation: "회의는 어제 오후에 열렸다." 
+            sentence: "Lee was able to start a [] in medicine.",
+            answer: "career",
+            translation: "그녀는 의학에서 경력을 시작할 수 있었다." 
         },
         {
-            sentence: "An understander [            ] his cocktail party script.",
-            answer: "brought out",
-            translation: "이해하는 사람은 그의 칵테일파티 대본을 끄집어 냈다."
+            sentence: "She believed that [] systems would be adopted more widely across the country.",
+            answer: "medical examiner",
+            translation: "그녀는 검시관 체계가 전국적으로 더 넓게 채택될 것이라고 믿었다."
         },
         {
-            sentence: "There is something instantly [           ] about the colour of fire and danger.",
-            answer: "arresting",
-            translation: "불과 위험의 색에 관한 즉각적으로 시선을 사로잡는 무언가가 있다."
+            sentence: "The police launched an [] into the robbery case.",
+            answer: "investigation",
+            translation: "경찰은 강도 사건에 대한 수사를 시작헀다."
         },
         {
-            sentence: "It is charged with alarm and [       ].",
-            answer: "urgency",
-            translation: "그것은 경고와 긴급함으로 가득 차 있다."
+            sentence: "He had a [] for education medical students.",
+            answer: "passion",
+            translation: "그는 의과 학생들을 가르치고자 하는 열정이 있었다."
         },
         {
-            sentence: "[          ] few butterflies are red either.",
-            answer: "Relatively",
-            translation: "붉은색의 나비도 비교적 거의 없는 편이다."
+            sentence: "Psychology is a fascinating [] of science.",
+            answer: "branch",
+            translation: "심리학은 과학의 매력적인 분야다."
         },
         {
-            sentence: "Vision is our [        ] sense.",
-            answer: "dominant",
-            translation: "시각은 우리의 지배적인 감각이다."
+            sentence: "sh wanted to see more young medical sudents trained in [].",
+            answer: "legal medicine",
+            translation: "그녀는 더 많은 젊은 의과 학생들이 법의학 분야에서 훈련받는 것을 보고 싶어 했다."
         },
         {
-            sentence: "Our sense of hearing isn't [          ].",
-            answer: "a big deal",
-            translation: "우리의 청각은 중요한 것이 아니다."
+            sentence: "Medical [] always reecommend regular exercise for good health.",
+            answer: "experts",
+            translation: "의료 전문가들은 건강을 위해 항상 규칙적인 운동을 권한다."
         },
         {
-            sentence: "I don't have to mention the [        ] example of cavemen.",
-            answer: "worn-out",
-            translation: "내가 원시인의 진부한 예를 언급할 필요는 없다."
+            sentence: "The committee decided to [] the new policy.",
+            answer: "adopt",
+            translation: "위원회는 새로운 정책을 채택하기로 결정했다."
         },
         {
-            sentence: "These pose an [             ] but serious threat.",
-            answer: "unanticipated",
-            translation: "이것은 예상치 못한, 하지만 심각한 위협을 제기한다."
+            sentence: "She decided to [] the rest of her life to developing this field.",
+            answer: "devote",
+            translation: "그녀는 자신의 여생을 이 분야를 발전시키는 데 바치기로 결심했다."
         },
         {
-            sentence: "[           ] waited for the traffic light to change.",
-            answer: "Pedestrians",
-            translation: "보행자들이 신호등이 바뀌기를 기다렸다."
+            sentence: "The speaker tried to [] the audience with strong evidence.",
+            answer: "persuade",
+            translation: "연사는 강력한 증거로 청중을 설득하려 했다."
+        },
+        {
+            sentence: "Her dream was to [] Harvard Medical School.",
+            answer: "attend",
+            translation: "그녀의 꿈은 하버드 의학 대학에 가는 것이었다."
         },{
-            sentence: "They depend on engine noise to [      ] and orient to cars.",
-            answer: "detect",
-            translation: "그들은 차를 발견하고 방향을 잡기 위해 엔진 소리에 의존한다." 
+            sentence: "The state [] signed the new education bill into law.",
+            answer: "governor",
+            translation: "주지사는 새로운 교육 법안에 서명하여 발효시켰다." 
         },
         {
-            sentence: "The government requires electric vehicles [           ] a warning noise.",
-            answer: "to generate",
-            translation: "정부는 전기차가 경고음을 내도록 요구한다."
+            sentence: "Many common problems [] a lack of attention.",
+            answer: "result from",
+            translation: "많은 흔한 문제는 주의력 부족에서 비롯된다."
         },
         {
-            sentence: "A cook have to first find a pumpkin of [        ] size.",
-            answer: "suitable",
-            translation: "요리사는 먼저 적당한 크기의 호박을 찾아야 한다."
+            sentence: "They often destroyed clues without [] it.",
+            answer: "realizing",
+            translation: "그들은 알아차리지도 못한 채 자주 단서들을 파손했다."
         },
         {
-            sentence: "She found an [       ] stone near the river.",
-            answer: "unusual",
-            translation: "그녀는 강 근처에서 특이한 돌을 발견했다."
+            sentence: "They had to learn how to [] crime scenes from a medical point of view.",
+            answer: "observe",
+            translation: "그들은 범죄 현장을 의학적 관점에서 관찰하는 법을 배워야 했다."
         },
         {
-            sentence: "The chef [        ] fresh ingredients well.",
-            answer: "combined",
-            translation: "요리사는 신선한 재료들을 잘 결합했다."
+            sentence: "Lee [] a creative tool.",
+            answer: "came up with",
+            translation: "Lee는 창의적인 도구를 생각해 냈다."
         },
         {
-            sentence: "Chefs prefer fresh [           ].",
-            answer: "ingredients",
-            translation: "요리사들은 신선한 재료를 선호한다."
+            sentence: "Miniatures of crime scenes were highly detailed and [].",
+            answer: "accurate",
+            translation: "범죄현장 미니어처는 매우 자세하고 정밀했다."
         },
         {
-            sentence: "She is [       ] coffee into a mug.",
-            answer: "pouring",
-            translation: "그녀는 머그잔에 커피를 따르고 있다."
+            sentence: "They included details like a blood []",
+            answer: "stain",
+            translation: "그것들은 핏자국 같은 세부 사항들을 포함했다."
         },
         {
-            sentence: "Cooks may cut out a great deal of [     ] and time.",
-            answer: "labor",
-            translation: "요리사들은 많은 노동과 시간을 절약할 수도 있다."
+            sentence: "Her [] to forensic science were significant.",
+            answer: "contributions",
+            translation: "과학 수사에 대한 그녀의 기여는 상당했다."
         },
         {
-            sentence: "A missing hiker was found safe on Tuesday by a [      ] team.",
-            answer: "rescue",
-            translation: "실종된 등산객이 안전한 상태로 발견되었다."
-        },
-        {
-            sentence: "A recent forest fire had [         ] some signs.",
-            answer: "destoryed",
-            translation: "최근의 산불이 몇몇 표지판을 망가뜨렸다."
-        },
+            sentence: "She had [] to enter the field.",
+            answer: "struggled",
+            translation: "그녀는 그 분야에 들거가는 데 고군분투했다."
+        }
     ];
 
     const shuffleArray = array => {
