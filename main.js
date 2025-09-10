@@ -2,11 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sentenceEl = document.getElementById('sentence');
     const translationEl = document.getElementById('translation');
     const answerInput = document.getElementById('answer-input');
-    const submitBtn = document.getElementById('submit-btn');
-    const nextBtn = document.getElementById('next-btn');
     const feedbackEl = document.getElementById('feedback');
-    const reviewBtn = document.getElementById('review-btn');
-
+    let isfocus = false;
+    let state = 'submit'
     let originalquestions = [
         {
             sentence: "when an infant is [          ] it always seeks out its mother.",
@@ -20,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             sentence: "It also has to be [            ] detailed.",
-            answer: "sufficently",
+            answer: "sufficiently",
             translation: "이것 또한 충분히 상세하게 그려져있어야 한다."
         },
         {
@@ -517,7 +515,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let incorrectQuestions = [];
     let currentQuestionIndex = 0;
-    let isReviewMode = false;
 
     function loadQuestion() {
         if (currentQuestionIndex < questions.length) {
@@ -526,18 +523,15 @@ document.addEventListener('DOMContentLoaded', () => {
             answerInput.value = '';
             feedbackEl.textContent = '';
             feedbackEl.className = '';
-            submitBtn.style.display = 'inline-block';
-            nextBtn.style.display = 'none';
+            state = 'submit'
             answerInput.disabled = false;
         } else {
             // End of the quiz
             sentenceEl.textContent = "Quiz finished!";
             answerInput.style.display = 'none';
-            submitBtn.style.display = 'none';
-            nextBtn.style.display = 'none';
             if (incorrectQuestions.length > 0) {
                 feedbackEl.textContent = `You have ${incorrectQuestions.length} incorrect answers.`;
-                reviewBtn.style.display = 'inline-block';
+                state = 'review'
             } else {
                 feedbackEl.textContent = "Congratulations! You answered all questions correctly.";
                 feedbackEl.className = 'correct';
@@ -555,12 +549,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             feedbackEl.textContent = `Incorrect. The correct answer is: ${correctAnswer}`;
             feedbackEl.className = 'incorrect';
-            if (!isReviewMode) {
-                incorrectQuestions.push(questions[currentQuestionIndex]);
-            }
+            incorrectQuestions.push(questions[currentQuestionIndex]);
         }
-        submitBtn.style.display = 'none';
-        nextBtn.style.display = 'inline-block';
+        state = 'next'
         answerInput.disabled = true;
     }
 
@@ -570,23 +561,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function startReview() {
-        isReviewMode = true;
         questions = [...incorrectQuestions];
         incorrectQuestions = [];
         currentQuestionIndex = 0;
-        reviewBtn.style.display = 'none';
         answerInput.style.display = 'inline-block';
         loadQuestion();
     }
-
-    submitBtn.addEventListener('click', checkAnswer);
-    nextBtn.addEventListener('click', nextQuestion);
-    reviewBtn.addEventListener('click', startReview);
-    answerInput.addEventListener('keyup', (event) => {
+    document.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
-            if(submitBtn.style.display !== 'none') {
+            if (state == 'submit') {
                 checkAnswer();
+            } else if (state == 'next') {
+                nextQuestion();
             }
+            else if (state == 'review') {
+                startReview();
+            }
+        }
+    });
+
+    answerInput.addEventListener('focus', function() {
+    });
+
+    answerInput.addEventListener('blur', function() {
+        isfocus = false;
+        if (state == 'submit') {
+            checkAnswer();
+        }
+    });
+
+    document.body.addEventListener("click", () => {
+        console.log(state)
+        if (state == 'submit') {
+            document.getElementById("answer-input").focus();
+        }
+        else if (state == 'next') {
+            if(isfocus) {
+                nextQuestion();
+            }
+            isfocus = true;
+        }
+        else if (state == 'review') {
+            startReview();
         }
     });
 
