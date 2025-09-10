@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             sentence: "A recent forest fire had [         ] some signs.",
-            answer: "destoryed",
+            answer: "destroyed",
             translation: "최근의 산불이 몇몇 표지판을 망가뜨렸다."
         },{
             sentence: "The [           ] was dropping quickly.",
